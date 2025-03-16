@@ -1,0 +1,14 @@
+.App footer {
+  margin-left: 40px;
+}
+
+.App a {
+  color: #496566;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .App footer {
+    margin-left: 0px;
+  }
+}
