@@ -1,0 +1,101 @@
+.WeatherInfo .content {
+  background-color: #6f8884;
+  padding: 20px 40px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.WeatherInfo ul {
+  list-style: none;
+}
+
+.img {
+  display: inline-block;
+  width: 160px;
+}
+
+.current-weather-wrap {
+  position: relative;
+  top: -60px;
+}
+
+.current-weather .current-weather-temperature {
+  font-size: 100px;
+  font-weight: 600;
+}
+
+.current-weather .current-weather-units {
+  font-size: 40px;
+  position: relative;
+  top: -38px;
+  margin-left: 5px;
+}
+
+.WeatherInfo .weather-more-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.WeatherInfo .weather-circle {
+  border: none;
+  font-weight: 900;
+  height: 95px;
+  border-radius: 50%;
+  width: 95px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  font-size: 15px;
+}
+
+.WeatherInfo .weather-info {
+  position: relative;
+  top: -25px;
+}
+
+.feels-like {
+  background-color: #cdb080;
+}
+
+.humidity {
+  background-color: #c98332;
+}
+
+.wind {
+  background-color: #babab7;
+}
+
+@media (max-width: 768px) {
+  .WeatherInfo .content {
+    padding: 10px;
+  }
+
+  .current-weather-wrap {
+    position: relative;
+    top: -10px;
+  }
+
+  .img {
+    width: 130px;
+  }
+
+  .current-weather .current-weather-temperature {
+    font-size: 80px;
+    font-weight: 600;
+  }
+
+  .current-weather .current-weather-units {
+    font-size: 30px;
+    position: relative;
+    top: -33px;
+  }
+
+  .WeatherInfo .weather-info {
+    position: relative;
+    top: -10px;
+  }
+}
