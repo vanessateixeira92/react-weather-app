@@ -9,11 +9,6 @@
   list-style: none;
 }
 
-.img {
-  display: inline-block;
-  width: 160px;
-}
-
 .current-weather-wrap {
   position: relative;
   top: -60px;

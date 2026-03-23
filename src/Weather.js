@@ -8,7 +8,7 @@ export default function Weather(props) {
   const [city, setCity] = useState(props.defaultCity);
 
   function handleResponse(response) {
-    console.log(response.data.dt);
+    console.log(response.data.time);
     setWeatherData({
       loaded: true,
       date: new Date(response.data.time * 1000),
@@ -20,7 +20,7 @@ export default function Weather(props) {
       feels_like: response.data.temperature.feels_like,
       icon: response.data.condition.icon_url,
     });
-    console.log("Date from API:", new Date(response.data.dt * 1000));
+    console.log("Date from API:", new Date(response.data.time * 1000));
   }
 
   function search() {
@@ -41,16 +41,12 @@ export default function Weather(props) {
     return (
       <div className="Weather">
         <div className="header">
-          <div className="row mb-5">
-            <div className="col-6  d-flex justify-content-start ">
-              <h5>Nimbusly</h5>
-            </div>
-
-            <div className="col-6 d-flex justify-content-end">
-              <button className="btn-theme btn btn-secondary btn-sm">
-                Dark Mode
-              </button>
-            </div>
+          <div className="img-logo">
+            <img
+              src="images/logo.png"
+              alt="Weather App Logo"
+              className="logo"
+            />
           </div>
 
           <form onSubmit={handleSubmit}>
@@ -64,7 +60,7 @@ export default function Weather(props) {
                   onChange={handleChangeCity}
                 />
               </div>
-              <div className="col-3">
+              <div className="col-3 p-0">
                 <input type="submit" value="search" className="input-btn btn" />
               </div>
             </div>

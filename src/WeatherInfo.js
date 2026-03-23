@@ -1,5 +1,6 @@
 import React from "react";
 import FormattedDate from "./FormattedDate";
+import WeatherIcon from "./WeatherIcon";
 
 import "./WeatherInfo.css";
 
@@ -9,12 +10,6 @@ export default function WeatherInfo(props) {
     <div className="WeatherInfo">
       <div className="content">
         <div className="row">
-          <div className="col-6 d-flex justify-content-start">
-            <h4>
-              <strong>Current Weather</strong>
-            </h4>
-          </div>
-
           <div className="col-6 mt-3 d-flex justify-content-end">
             <h2>
               <strong>📍{props.data.city}</strong>
@@ -33,10 +28,9 @@ export default function WeatherInfo(props) {
         </div>
         <div className="row current-weather-wrap">
           <div className="col-6 d-flex justify-content-end">
-            <img
-              src={props.data.icon}
-              alt={props.data.description}
-              className="img"
+            <WeatherIcon
+              description={props.data.description}
+              date={props.data.date}
             />
           </div>
           <div className="col-6">
