@@ -9,13 +9,21 @@ function App() {
       <div className="container">
         <Weather defaultCity="Berlin" />
         <footer>
-          This project was coded by Vanessa Teixeira and is {""}
+          This project was coded by Vanessa Teixeira and is open-sourced on {""}
           <a
             href="https://github.com/vanessateixeira92/react-weather-app"
             target="_blank"
             rel="noreferrer"
           >
-            open-sourced on GitHub
+            GitHub{" "}
+          </a>
+          and hosted on{" "}
+          <a
+            href="https://nimbusly-app.netlify.app/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Netlify.
           </a>
         </footer>
       </div>
