@@ -42,16 +42,12 @@ export default function Weather(props) {
       <div className="Weather">
         <div className="header">
           <div className="img-logo">
-            <img
-              src="images/logo.png"
-              alt="Weather App Logo"
-              className="logo"
-            />
+            <img src="images/logo.png" alt="Nimbusly Logo" className="logo" />
           </div>
 
-          <form onSubmit={handleSubmit}>
-            <div className="row form">
-              <div className="col-9">
+          <form onSubmit={handleSubmit} className="search-form">
+            <div className="row g-2 justify-content-center">
+              <div className="col-12 col-md-8">
                 <input
                   type="search"
                   placeholder="Search for a city.."
@@ -60,8 +56,12 @@ export default function Weather(props) {
                   onChange={handleChangeCity}
                 />
               </div>
-              <div className="col-3 p-0">
-                <input type="submit" value="search" className="input-btn btn" />
+              <div className="col-12 col-md-3">
+                <input
+                  type="submit"
+                  value="Search"
+                  className="input-btn btn w-100"
+                />
               </div>
             </div>
           </form>
@@ -71,6 +71,6 @@ export default function Weather(props) {
     );
   } else {
     search();
-    return <p>Loading...</p>;
+    return <p className="text-center">Loading...</p>;
   }
 }

@@ -1,96 +1,210 @@
 .WeatherInfo .content {
-  background-color: #6f8884;
-  padding: 20px 40px;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.45),
+    rgba(255, 255, 255, 0.25)
+  );
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  padding: 34px;
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* LAYOUT PRINCIPAL */
+.main-layout {
+  margin-bottom: 30px;
+}
+
+/* BLOCO DA ESQUERDA */
+.weather-side-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.city-name {
+  margin-bottom: 10px;
+  font-size: 42px;
+  font-weight: 700;
+}
+
+.weather-meta {
+  margin-left: 20px;
+  color: var(--text-muted);
+  font-size: 16px;
 }
 
 .WeatherInfo ul {
   list-style: none;
+  padding: 0;
 }
 
-.current-weather-wrap {
-  position: relative;
-  top: -60px;
+/* CARD PRINCIPAL */
+.main-weather-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.75),
+    rgba(255, 255, 255, 0.45)
+  );
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 26px;
+  padding: 30px;
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.current-weather .current-weather-temperature {
-  font-size: 100px;
+.temperature {
+  font-size: 110px;
   font-weight: 600;
+  color: var(--primary);
+  line-height: 1;
 }
 
-.current-weather .current-weather-units {
+.unit {
   font-size: 40px;
   position: relative;
-  top: -38px;
-  margin-left: 5px;
+  top: -45px;
+  margin-left: 6px;
+  color: var(--primary);
 }
 
-.WeatherInfo .weather-more-info {
+/* CARDS */
+
+.info-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.65),
+    rgba(255, 255, 255, 0.35)
+  );
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  min-height: 140px;
+  border-radius: 22px;
+  padding: 24px 18px;
+
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.WeatherInfo .weather-circle {
-  border: none;
-  font-weight: 900;
-  height: 95px;
-  border-radius: 50%;
-  width: 95px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 5px;
-  margin-top: 5px;
+.info-value {
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  line-height: 1.1;
+}
+
+.info-label {
   font-size: 15px;
+  color: var(--text-main);
 }
 
-.WeatherInfo .weather-info {
-  position: relative;
-  top: -25px;
+.feels-card {
+  background-color: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.78),
+    rgba(214, 228, 231, 0.65)
+  );
 }
 
-.feels-like {
-  background-color: #cdb080;
+.humidity-card {
+  background: linear-gradient(135deg, #f0b05c, #e18a2d);
+  color: white;
 }
 
-.humidity {
-  background-color: #c98332;
+.wind-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.78),
+    rgba(236, 229, 221, 0.7)
+  );
+  color: #24333d;
 }
 
-.wind {
-  background-color: #babab7;
-}
-
+/* MOBILE */
 @media (max-width: 768px) {
   .WeatherInfo .content {
-    padding: 10px;
+    padding: 20px 16px;
   }
 
-  .current-weather-wrap {
-    position: relative;
-    top: -10px;
+  .main-layout {
+    margin-bottom: 24px;
   }
 
-  .img {
-    width: 130px;
+  .weather-side-info {
+    padding-left: 0;
+    text-align: center;
+    align-items: center;
   }
 
-  .current-weather .current-weather-temperature {
-    font-size: 80px;
-    font-weight: 600;
-  }
-
-  .current-weather .current-weather-units {
+  .city-name {
     font-size: 30px;
-    position: relative;
-    top: -33px;
+    margin-top: 18px;
+    margin-bottom: 8px;
   }
 
-  .WeatherInfo .weather-info {
-    position: relative;
-    top: -10px;
+  .weather-meta {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+  .weather-message {
+    font-size: 15px;
+    max-width: 260px;
+  }
+
+  .main-weather-card {
+    padding: 22px;
+    min-height: auto;
+  }
+
+  .weather-main-inner {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .temperature {
+    font-size: 75px;
+  }
+
+  .unit {
+    font-size: 26px;
+    top: -20px;
+  }
+
+  .weather-info {
+    margin-top: 20px;
+    padding: 0 4px;
+  }
+
+  .info-card {
+    min-height: 110px;
+    padding: 18px 14px;
+    border-radius: 18px;
+    margin-bottom: 6px;
+  }
+
+  .info-value {
+    font-size: 24px;
+    margin-bottom: 6px;
+  }
+
+  .info-label {
+    font-size: 13px;
   }
 }

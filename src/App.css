@@ -1,14 +1,29 @@
+.App {
+  padding: 30px 16px;
+}
+
 .App footer {
-  margin-left: 40px;
+  margin-top: 22px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14px;
 }
 
 .App a {
-  color: #496566;
+  color: var(--secondary);
   text-decoration: none;
 }
 
+.App a:hover {
+  color: var(--primary);
+}
+
 @media (max-width: 768px) {
+  .App {
+    padding: 18px 10px;
+  }
+
   .App footer {
-    margin-left: 0px;
+    font-size: 13px;
   }
 }

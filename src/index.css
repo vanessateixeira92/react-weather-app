@@ -1,5 +1,39 @@
-body {
-  background-color: #bab5a2;
+:root {
+  --bg-main: #ebe6dd;
+  --bg-gradient-top: #5e7d82;
+  --bg-gradient-bottom: #ebe6dd;
 
+  --bg-card: rgba(255, 255, 255, 0.58);
+  --bg-card-strong: rgba(255, 255, 255, 0.78);
+
+  --primary: #e18a2d;
+  --primary-hover: #cb7721;
+  --secondary: #4f6f73;
+
+  --text-main: #1f2933;
+  --text-muted: #6b7280;
+  --text-light: #ffffff;
+
+  --radius-lg: 28px;
+  --radius-md: 22px;
+  --radius-sm: 16px;
+
+  --shadow-soft: 0 20px 40px rgba(0, 0, 0, 0.08);
+  --shadow-card: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--text-main);
+  background: linear-gradient(
+    180deg,
+    var(--bg-gradient-top) 0%,
+    var(--bg-gradient-bottom) 72%
+  );
+  min-height: 100vh;
   font-family: "Iansui", cursive;
 }
