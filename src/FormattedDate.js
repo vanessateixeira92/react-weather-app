@@ -1,29 +1,28 @@
 import React from "react";
 
-export default function FormattedDate(props) {
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-
-  let day = days[props.date.getDay()];
-  let hours = props.date.getHours();
-  if (hours < 10) {
-    hours = `0${hours}`;
+export default function FormattedDate({ date, timezone, short = false }) {
+  if (!date) {
+    return null;
   }
 
-  let minutes = props.date.getMinutes();
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
+  const formattedDate = date instanceof Date ? date : new Date(date * 1000);
+
+  if (short) {
+    const day = new Intl.DateTimeFormat("en-GB", {
+      weekday: "long",
+      timeZone: timezone,
+    }).format(formattedDate);
+
+    return <div className="FormattedDate">{day}</div>;
   }
-  return (
-    <div className="FormattedDate">
-      {day}, {hours}:{minutes}
-    </div>
-  );
+
+  const formattedValue = new Intl.DateTimeFormat("en-GB", {
+    weekday: "long",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+    timeZone: timezone,
+  }).format(formattedDate);
+
+  return <div className="FormattedDate">{formattedValue}</div>;
 }

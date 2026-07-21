@@ -34,12 +34,27 @@ export default function WeatherIcon(props) {
     wind: windyAnimation,
   };
 
-  const key = Object.keys(map).find((k) => description.includes(k));
+  const key = Object.keys(map).find((weather) => description.includes(weather));
 
   const animation =
     map[key] || (isNight ? clearNightAnimation : sunnyAnimation);
+  console.log({
+    description,
+    icon,
+    isNight,
+    key,
+  });
 
   return (
-    <Player autoplay loop src={animation} style={{ height: 120, width: 120 }} />
+    <Player
+      key={`${key}-${isNight}`}
+      autoplay
+      loop
+      src={animation}
+      style={{
+        height: props.size || 120,
+        width: props.size || 120,
+      }}
+    />
   );
 }

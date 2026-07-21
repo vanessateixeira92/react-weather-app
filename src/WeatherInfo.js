@@ -1,11 +1,13 @@
 import React from "react";
 import FormattedDate from "./FormattedDate";
 import WeatherIcon from "./WeatherIcon";
+import WeatherForecast from "./WeatherForecast";
 
 import "./WeatherInfo.css";
 
 export default function WeatherInfo(props) {
   console.log(props.data);
+  console.log("WeatherInfo coordinates:", props.data.coordinates);
   return (
     <div className="WeatherInfo fade-in">
       <div className="content">
@@ -17,7 +19,10 @@ export default function WeatherInfo(props) {
 
               <ul className="weather-meta">
                 <li>
-                  <FormattedDate date={props.data.date} />
+                  <FormattedDate
+                    date={props.data.date}
+                    timezone={props.data.timezone}
+                  />
                 </li>
                 <li className="text-capitalize">
                   {props.data.description} in {props.data.city}
@@ -25,6 +30,7 @@ export default function WeatherInfo(props) {
               </ul>
             </div>
           </div>
+
           {/* DIREITA → CARD PRINCIPAL */}
           <div className="col-12 col-lg-6">
             <div className="main-weather-card">
@@ -32,7 +38,8 @@ export default function WeatherInfo(props) {
                 <div className="col-6 text-center">
                   <WeatherIcon
                     description={props.data.description}
-                    date={props.data.date}
+                    icon={props.data.icon}
+                    size={120}
                   />
                 </div>
                 <div className="col-6 text-center text-md-start">
@@ -73,6 +80,8 @@ export default function WeatherInfo(props) {
             </div>
           </div>
         </div>
+        <div className="weather-divider"></div>
+        <WeatherForecast coordinates={props.data.coordinates} />
       </div>
     </div>
   );

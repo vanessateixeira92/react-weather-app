@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import tzlookup from "tz-lookup";
 import WeatherInfo from "./WeatherInfo";
 import "./Weather.css";
 
@@ -8,11 +9,16 @@ export default function Weather(props) {
   const [city, setCity] = useState(props.defaultCity);
 
   function handleResponse(response) {
-    console.log(response.data.time);
+    const { latitude, longitude } = response.data.coordinates;
+    const timezone = tzlookup(latitude, longitude);
+    console.log("Timezone:", timezone);
+
     setWeatherData({
       loaded: true,
       date: new Date(response.data.time * 1000),
       city: response.data.city,
+      coordinates: response.data.coordinates,
+      timezone: timezone,
       temperature: response.data.temperature.current,
       description: response.data.condition.description,
       humidity: response.data.temperature.humidity,
