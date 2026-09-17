@@ -39,7 +39,14 @@ export default function Weather({ defaultCity }) {
         return;
       }
 
-      const apiKey = "ec00aa08afab6385c60b468o5877e14t";
+      const apiKey = process.env.REACT_APP_SHECODES_API_KEY;
+      console.log("API key loaded:", Boolean(apiKey));
+
+      if (!apiKey) {
+        setError("Weather API key is missing.");
+        return;
+      }
+
       const encodedCity = encodeURIComponent(trimmedCity);
 
       const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${encodedCity}&key=${apiKey}&units=metric`;
