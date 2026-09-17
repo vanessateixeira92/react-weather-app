@@ -1,24 +1,24 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import tzlookup from "tz-lookup";
 import WeatherInfo from "./WeatherInfo";
 import "./Weather.css";
 
-export default function Weather(props) {
+export default function Weather({ defaultCity }) {
   const [weatherData, setWeatherData] = useState({ loaded: false });
-  const [city, setCity] = useState(props.defaultCity);
+  const [city, setCity] = useState(defaultCity);
+  const [error, setError] = useState("");
 
-  function handleResponse(response) {
+  const handleResponse = useCallback((response) => {
     const { latitude, longitude } = response.data.coordinates;
     const timezone = tzlookup(latitude, longitude);
-    console.log("Timezone:", timezone);
 
     setWeatherData({
       loaded: true,
       date: new Date(response.data.time * 1000),
       city: response.data.city,
       coordinates: response.data.coordinates,
-      timezone: timezone,
+      timezone,
       temperature: response.data.temperature.current,
       description: response.data.condition.description,
       humidity: response.data.temperature.humidity,
@@ -26,57 +26,91 @@ export default function Weather(props) {
       feels_like: response.data.temperature.feels_like,
       icon: response.data.condition.icon_url,
     });
-    console.log("Date from API:", new Date(response.data.time * 1000));
-  }
 
-  function search() {
-    const apiKey = "ec00aa08afab6385c60b468o5877e14t";
-    const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
-  }
+    setError("");
+  }, []);
+
+  const search = useCallback(
+    (searchCity) => {
+      const trimmedCity = searchCity.trim();
+
+      if (!trimmedCity) {
+        setError("Please enter a city.");
+        return;
+      }
+
+      const apiKey = "ec00aa08afab6385c60b468o5877e14t";
+      const encodedCity = encodeURIComponent(trimmedCity);
+
+      const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${encodedCity}&key=${apiKey}&units=metric`;
+
+      setError("");
+      setWeatherData({ loaded: false });
+
+      axios
+        .get(apiUrl)
+        .then(handleResponse)
+        .catch(() => {
+          setError("City not found. Please try again.");
+        });
+    },
+    [handleResponse],
+  );
+
+  useEffect(() => {
+    search(defaultCity);
+  }, [defaultCity, search]);
+
   function handleSubmit(event) {
     event.preventDefault();
-    search();
+    search(city);
   }
 
   function handleChangeCity(event) {
     setCity(event.target.value);
   }
 
-  if (weatherData.loaded) {
-    return (
-      <div className="Weather">
-        <div className="header">
-          <div className="img-logo">
-            <img src="images/logo.png" alt="Nimbusly Logo" className="logo" />
-          </div>
-
-          <form onSubmit={handleSubmit} className="search-form">
-            <div className="row g-2 justify-content-center">
-              <div className="col-12 col-md-8">
-                <input
-                  type="search"
-                  placeholder="Search for a city.."
-                  autoFocus="on"
-                  className="form-control search-input "
-                  onChange={handleChangeCity}
-                />
-              </div>
-              <div className="col-12 col-md-3">
-                <input
-                  type="submit"
-                  value="Search"
-                  className="input-btn btn w-100"
-                />
-              </div>
-            </div>
-          </form>
+  return (
+    <div className="Weather">
+      <div className="header">
+        <div className="img-logo">
+          <img src="images/logo.png" alt="Nimbusly Logo" className="logo" />
         </div>
-        <WeatherInfo data={weatherData} />
+
+        <form onSubmit={handleSubmit} className="search-form">
+          <div className="row g-2 justify-content-center">
+            <div className="col-12 col-md-9">
+              <input
+                type="search"
+                placeholder="Search for a city..."
+                autoFocus="on"
+                className="form-control search-input "
+                onChange={handleChangeCity}
+              />
+            </div>
+            <div className="col-12 col-md-3">
+              <input
+                type="submit"
+                value="Search"
+                className="input-btn btn w-100"
+              />
+            </div>
+          </div>
+        </form>
+        {error && (
+          <div className="weather-error" role="alert">
+            {error}
+          </div>
+        )}
       </div>
-    );
-  } else {
-    search();
-    return <p className="text-center">Loading...</p>;
-  }
+
+      {!weatherData.loaded && !error && (
+        <div className="weather-loading" role="status">
+          Loading weather...
+        </div>
+      )}
+
+      {weatherData.loaded && <WeatherInfo data={weatherData} />}
+    </div>
+  );
 }

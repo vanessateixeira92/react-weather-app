@@ -38,8 +38,7 @@ export default function WeatherInfo(props) {
                     </li>
                     <li>
                       {props.data.description.charAt(0).toUpperCase() +
-                        props.data.description.slice(1)}{" "}
-                      in {props.data.city}
+                        props.data.description.slice(1)}
                     </li>
                   </ul>
                 </div>
