@@ -1,21 +1,21 @@
 .App {
   padding: 30px 16px;
+  background-image: url("./images/weather-background.png.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .App footer {
   margin-top: 22px;
   text-align: center;
-  color: var(--text-muted);
+  color: white;
   font-size: 14px;
 }
 
 .App a {
-  color: var(--secondary);
-  text-decoration: none;
-}
-
-.App a:hover {
   color: var(--primary);
+  text-decoration: none;
 }
 
 @media (max-width: 768px) {

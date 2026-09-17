@@ -1,25 +1,39 @@
 :root {
-  --bg-main: #ebe6dd;
-  --bg-gradient-top: #5e7d82;
-  --bg-gradient-bottom: #ebe6dd;
+  /* COLORS OF NIMBUSLY */
+  --nimbus-blue: #3f899b;
+  --nimbus-blue-dark: #286879;
+  --nimbus-orange: #f29a32;
+  --nimbus-yellow: #f8bd4b;
+  --nimbus-cream: #f6f1e8;
 
+  /* APP BACKGROUND */
+  --bg-main: var(--nimbus-cream);
+  --bg-gradient-top: #8fa9ac;
+  --bg-gradient-bottom: var(--nimbus-cream);
+
+  /* CARDS */
   --bg-card: rgba(255, 255, 255, 0.58);
   --bg-card-strong: rgba(255, 255, 255, 0.78);
 
-  --primary: #e18a2d;
-  --primary-hover: #cb7721;
-  --secondary: #4f6f73;
+  /* PRINCIPAL COLORS */
+  --primary: var(--nimbus-orange);
+  --primary-hover: #d98229;
+  --secondary: var(--nimbus-blue);
+  --secondary-dark: var(--nimbus-blue-dark);
 
+  /* TEXT */
   --text-main: #1f2933;
-  --text-muted: #6b7280;
+  --text-muted: #62757b;
   --text-light: #ffffff;
 
+  /* BORDERS */
   --radius-lg: 28px;
   --radius-md: 22px;
   --radius-sm: 16px;
 
-  --shadow-soft: 0 20px 40px rgba(0, 0, 0, 0.08);
-  --shadow-card: 0 10px 25px rgba(0, 0, 0, 0.1);
+  /* SHADOWS */
+  --shadow-soft: 0 20px 40px rgba(40, 104, 121, 0.12);
+  --shadow-card: 0 10px 25px rgba(40, 104, 121, 0.16);
 }
 
 * {
@@ -34,6 +48,9 @@ body {
     var(--bg-gradient-top) 0%,
     var(--bg-gradient-bottom) 72%
   );
-  min-height: 100vh;
-  font-family: "Iansui", cursive;
+
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
 }

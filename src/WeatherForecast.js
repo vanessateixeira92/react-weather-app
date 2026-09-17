@@ -45,9 +45,12 @@ export default function WeatherForecast({ coordinates }) {
       <div className="row">
         {forecast.slice(0, 5).map((dailyForecast, index) => {
           return (
-            <div className="col" key={dailyForecast.time}>
+            <div
+              className={`col forecast-day ${index === 0 ? "today-card" : ""}`}
+              key={dailyForecast.time}
+            >
               {index === 0 ? (
-                <div className="FormattedDate">Today</div>
+                <div className="FormattedDate today-label">Today</div>
               ) : (
                 <FormattedDate date={dailyForecast.time} short />
               )}
@@ -60,7 +63,7 @@ export default function WeatherForecast({ coordinates }) {
 
               <div className="weather-forecast-temperatures">
                 <span className="weather-forecast-temperature-max">
-                  {Math.round(dailyForecast.temperature.maximum)}°
+                  {Math.round(dailyForecast.temperature.maximum)}° /
                 </span>
 
                 <span className="weather-forecast-temperature-min">

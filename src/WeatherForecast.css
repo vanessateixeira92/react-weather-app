@@ -1,5 +1,49 @@
 .WeatherForecast {
   text-align: center;
+  padding: 20px 18px;
+  margin-top: 30px;
+  border-radius: 24px;
+  background: rgba(2, 53, 68, 0.514);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: white;
+}
+
+.forecast-day {
+  padding: 14px 10px;
+  margin: 0px 10px;
+  position: relative;
+}
+
+.forecast-day:not(:last-child)::after {
+  content: "";
+  position: absolute;
+
+  top: 18%;
+  right: 0;
+
+  width: 1px;
+  height: 64%;
+
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.today-card {
+  border: 1px solid #f5a623;
+  background: rgba(255, 166, 35, 0.06);
+  border-radius: 15px;
+  box-shadow:
+    rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.today-card::after {
+  display: none;
+}
+
+.WeatherForecast .today-label {
+  color: #f5a623;
 }
 
 .weather-forecast-temperature-min {
