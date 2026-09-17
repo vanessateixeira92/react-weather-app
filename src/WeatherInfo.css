@@ -33,7 +33,7 @@
 
 .location-icon {
   color: var(--primary);
-  margin-top: 3px;
+  margin-top: 6px;
 }
 
 .weather-side-info {
@@ -43,15 +43,17 @@
 }
 
 .city-name {
-  font-size: 45px;
-  font-weight: 700;
+  margin: 0;
+  font-size: 55px;
+  font-weight: 500;
   color: var(--text-light);
 }
 
 .weather-meta {
-  color: white;
+  margin: 8px 0 0;
+  color: var(--text-light);
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 300;
   line-height: 1.5;
 }
 
@@ -84,7 +86,7 @@
 .temperature {
   font-size: 110px;
   font-weight: 600;
-  color: white;
+  color: var(--text-light);
   line-height: 1;
 }
 
@@ -93,25 +95,23 @@
   position: relative;
   top: -45px;
   margin-left: 6px;
-  color: white;
+  color: var(--text-light);
 }
 
 /* CARDS */
 
 .info-card {
   min-height: 140px;
-
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 24px;
-
+  padding: 20px;
   background: rgba(235, 247, 249, 0.82);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.55);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-card);
-
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
@@ -124,6 +124,7 @@
     rgba(63, 137, 155, 0.28)
   );
   box-shadow: 0 16px 32px rgba(40, 104, 121, 0.2);
+  transform: translateY(-3px);
 }
 
 .metric-content {
@@ -141,58 +142,140 @@
 
 .info-value {
   font-size: 34px;
-  font-weight: 750;
+  font-weight: 700;
   line-height: 1.1;
   color: var(--nimbus-blue-dark);
 }
 
 .info-label {
   font-size: 17px;
-  font-weight: 650;
+  font-weight: 400;
   color: var(--nimbus-blue-dark);
+}
+
+/* TABLET */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .WeatherInfo .content {
+    padding: 24px;
+    border-radius: 24px;
+  }
+
+  .main-layout {
+    margin-bottom: 26px;
+  }
+
+  .weather-info-content {
+    gap: 10px;
+  }
+
+  .location-icon {
+    margin-top: 5px;
+  }
+
+  .location-icon svg {
+    width: 44px;
+    height: 44px;
+  }
+
+  .city-name {
+    margin: 0;
+    font-size: 42px;
+  }
+
+  .weather-meta {
+    margin: 8px 0 0;
+    font-size: 16px;
+  }
+
+  .main-weather-card {
+    min-height: 170px;
+    padding: 24px 20px;
+    border-radius: 22px;
+  }
+
+  .temperature {
+    font-size: 88px;
+  }
+
+  .unit {
+    top: -34px;
+    margin-left: 4px;
+    font-size: 32px;
+  }
+
+  .weather-info {
+    margin-top: 0;
+  }
+
+  .info-card {
+    min-height: 125px;
+    gap: 14px;
+    padding: 18px 12px;
+    border-radius: 20px;
+  }
+
+  .metric-icon {
+    min-width: 36px;
+    margin-top: 6px;
+  }
+
+  .metric-icon svg {
+    width: 44px;
+    height: 44px;
+  }
+
+  .metric-content {
+    gap: 8px;
+  }
+
+  .info-value {
+    font-size: 27px;
+  }
+
+  .info-label {
+    font-size: 15px;
+  }
 }
 
 /* MOBILE */
 @media (max-width: 768px) {
   .WeatherInfo .content {
     padding: 20px 16px;
+    border-radius: 22px;
   }
 
   .main-layout {
     margin-bottom: 24px;
   }
 
+  .weather-info-content {
+    justify-content: center;
+  }
+
+  .location-icon {
+    margin-top: 18px;
+  }
+
   .weather-side-info {
     padding-left: 0;
     text-align: center;
-    align-items: center;
+    align-items: flex-start;
   }
 
   .city-name {
     font-size: 30px;
-    margin-top: 18px;
-    margin-bottom: 8px;
+    margin: 18px 0 8px;
   }
 
   .weather-meta {
-    margin-left: 0;
-    margin-bottom: 10px;
+    margin: 0 0 10px;
     font-size: 15px;
-  }
-
-  .weather-message {
-    font-size: 15px;
-    max-width: 260px;
   }
 
   .main-weather-card {
     padding: 22px;
     min-height: auto;
-  }
-
-  .weather-main-inner {
-    flex-direction: column;
-    gap: 10px;
   }
 
   .temperature {
@@ -202,6 +285,7 @@
   .unit {
     font-size: 26px;
     top: -20px;
+    margin-left: 3px;
   }
 
   .weather-info {
@@ -213,15 +297,53 @@
     min-height: 110px;
     padding: 18px 14px;
     border-radius: 18px;
-    margin-bottom: 6px;
+    margin-bottom: 10px;
   }
 
   .info-value {
-    font-size: 24px;
-    margin-bottom: 6px;
+    font-size: 20px;
+    margin-bottom: 0;
   }
 
   .info-label {
-    font-size: 13px;
+    font-size: 14px;
+  }
+}
+
+/* SMALLMOBILE */
+@media (max-width: 480px) {
+  .WeatherInfo .content {
+    padding: 16px 12px;
+  }
+
+  .location-icon svg {
+    width: 38px;
+    height: 38px;
+  }
+
+  .city-name {
+    font-size: 30px;
+  }
+
+  .main-weather-card {
+    padding: 18px 10px;
+  }
+
+  .temperature {
+    font-size: 64px;
+  }
+
+  .unit {
+    top: -18px;
+    font-size: 22px;
+  }
+
+  .metric-icon svg {
+    width: 46px;
+    height: 46px;
+  }
+
+  .info-card {
+    gap: 18px;
   }
 }

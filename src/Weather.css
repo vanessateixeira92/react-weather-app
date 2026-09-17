@@ -1,3 +1,75 @@
+.Weather {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.Weather .logo {
+  display: block;
+  width: 100%;
+  max-width: 290px;
+  height: auto;
+  margin: 0 0 26px 0;
+}
+
+.Weather .search-form {
+  margin: 4px 0 20px;
+}
+
+.Weather .search-input {
+  height: 54px;
+  border: none;
+  padding: 0 20px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--text-main);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  font-size: 16px;
+}
+
+.Weather .search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.Weather .search-input:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 3px rgba(225, 138, 45, 0.22);
+  outline: none;
+}
+
+.Weather .input-btn {
+  height: 54px;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 16px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #e18a2d, #f2a647);
+  color: var(--text-light);
+  box-shadow: 0 10px 24px rgba(225, 138, 45, 0.26);
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.Weather .input-btn:hover {
+  background: linear-gradient(135deg, #cb7721, #e59237);
+  color: var(--text-light);
+  transform: translateY(-2px);
+}
+
+.Weather .input-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(225, 138, 45, 0.3);
+}
+
+.Weather .input-btn:disabled {
+  cursor: wait;
+  opacity: 0.75;
+  transform: none;
+}
+
 .weather-loading,
 .weather-error {
   margin-top: 20px;
@@ -6,80 +78,26 @@
   text-align: center;
 }
 
-.Weather {
-  max-width: 1100px;
-  margin: 0 auto;
-  width: 100%;
-  overflow-x: hidden;
+.weather-loading {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(20, 75, 89, 0.65);
+  color: var(--text-light);
 }
 
-.Weather .logo {
-  display: block;
-  max-width: 290px;
-  margin: 0 0 26px 0;
-}
-.Weather .search-form {
-  margin-top: 4px;
-  margin-bottom: 20px;
-}
-
-.Weather .search-input {
-  border: none;
-  border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.96);
-  color: var(--text-main);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-  font-size: 16px;
-  height: 54px;
-  padding: 0 20px;
-}
-
-.Weather .search-input::placeholder {
-  color: var(--text-muted);
-}
-
-.Weather .search-input:focus {
-  box-shadow: 0 0 0 3px rgba(225, 138, 45, 0.18);
-  outline: none;
-}
-
-.Weather .input-btn {
-  border: none;
-  border-radius: var(--radius-md);
-  font-size: 16px;
-  font-weight: 700;
-  height: 54px;
-  background: linear-gradient(135deg, #e18a2d, #f2a647);
-  color: #fff;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  box-shadow: 0 10px 24px rgba(225, 138, 45, 0.26);
-}
-
-.Weather .input-btn:hover {
-  background: linear-gradient(135deg, #cb7721, #e59237);
-  transform: translateY(-2px);
-  color: #fff;
-}
-
-.Weather .input-btn:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(225, 138, 45, 0.22);
+.weather-error {
+  border: 1px solid rgba(245, 194, 199, 0.95);
+  background: rgba(248, 215, 218, 0.95);
+  color: #842029;
 }
 
 @media (max-width: 768px) {
-  .Weather {
-    margin: 0 auto;
-    border-radius: 22px;
-  }
-
   .Weather .header {
     padding: 20px 16px 24px;
   }
 
   .Weather .logo {
     max-width: 180px;
-    margin-bottom: 18px;
+    margin: 0 auto 18px;
   }
 
   .Weather .search-input,
