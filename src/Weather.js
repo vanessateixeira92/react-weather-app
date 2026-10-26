@@ -41,7 +41,6 @@ export default function Weather({ defaultCity }) {
       }
 
       const apiKey = process.env.REACT_APP_SHECODES_API_KEY;
-      console.log("API key loaded:", Boolean(apiKey));
 
       if (!apiKey) {
         setError("Weather API key is missing.");

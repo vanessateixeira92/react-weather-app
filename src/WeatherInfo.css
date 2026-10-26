@@ -310,7 +310,7 @@
   }
 }
 
-/* SMALLMOBILE */
+/* SMALL MOBILE */
 @media (max-width: 480px) {
   .WeatherInfo .content {
     padding: 16px 12px;

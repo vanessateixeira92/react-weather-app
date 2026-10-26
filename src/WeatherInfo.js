@@ -7,8 +7,6 @@ import WeatherForecast from "./WeatherForecast";
 import "./WeatherInfo.css";
 
 export default function WeatherInfo(props) {
-  console.log(props.data);
-  console.log("WeatherInfo coordinates:", props.data.coordinates);
   return (
     <div className="WeatherInfo fade-in">
       <div className="content">

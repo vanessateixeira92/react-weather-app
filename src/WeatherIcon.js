@@ -38,12 +38,6 @@ export default function WeatherIcon(props) {
 
   const animation =
     map[key] || (isNight ? clearNightAnimation : sunnyAnimation);
-  console.log({
-    description,
-    icon,
-    isNight,
-    key,
-  });
 
   return (
     <Player

@@ -6,6 +6,7 @@ import axios from "axios";
 
 export default function WeatherForecast({ coordinates }) {
   const [forecast, setForecast] = useState(null);
+  const [forecastError, setForecastError] = useState("");
 
   const latitude = coordinates?.latitude;
   const longitude = coordinates?.longitude;
@@ -25,19 +26,32 @@ export default function WeatherForecast({ coordinates }) {
       `&units=metric`;
 
     setForecast(null);
+    setForecastError("");
 
     axios
       .get(apiUrl)
       .then((response) => {
         setForecast(response.data.daily);
       })
-      .catch((error) => {
-        console.error("Error loading forecast:", error);
+      .catch(() => {
+        setForecastError("Unable to load the forecast. Please try again.");
       });
   }, [latitude, longitude]);
 
+  if (forecastError) {
+    return (
+      <div className="WeatherForecast forecast-status" role="alert">
+        {forecastError}
+      </div>
+    );
+  }
+
   if (!forecast || forecast.length === 0) {
-    return <div className="WeatherForecast">Loading forecast...</div>;
+    return (
+      <div className="WeatherForecast forecast-status" role="status">
+        Loading forecast...
+      </div>
+    );
   }
 
   return (
