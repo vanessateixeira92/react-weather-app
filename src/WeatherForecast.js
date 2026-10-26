@@ -15,7 +15,7 @@ export default function WeatherForecast({ coordinates }) {
       return;
     }
 
-    const apiKey = "ec00aa08afab6385c60b468o5877e14t";
+    const apiKey = process.env.REACT_APP_SHECODES_API_KEY;
 
     const apiUrl =
       `https://api.shecodes.io/weather/v1/forecast` +
