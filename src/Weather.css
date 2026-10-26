@@ -16,15 +16,61 @@
   margin: 4px 0 20px;
 }
 
+.search-input-wrapper {
+  position: relative;
+}
+
 .Weather .search-input {
   height: 54px;
   border: none;
-  padding: 0 20px;
+  padding-right: 54px;
   border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.96);
   color: var(--text-main);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
   font-size: 16px;
+}
+
+.Weather .search-input::-webkit-search-cancel-button {
+  display: none;
+  appearance: none;
+}
+
+.clear-search {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  right: 14px;
+
+  width: 34px;
+  height: 34px;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-muted);
+
+  cursor: pointer;
+  transform: translateY(-50%);
+
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.clear-search:hover {
+  color: var(--nimbus-blue-dark);
+  background: rgba(40, 104, 121, 0.1);
+}
+
+.clear-search:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }
 
 .Weather .search-input::placeholder {
@@ -92,7 +138,11 @@
 
 @media (max-width: 768px) {
   .Weather .header {
-    padding: 20px 16px 24px;
+    padding: 16px 16px 18px;
+  }
+
+  .Weather .search-form {
+    margin-bottom: 12px;
   }
 
   .Weather .logo {

@@ -1,12 +1,13 @@
 import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import tzlookup from "tz-lookup";
+import { X } from "lucide-react";
 import WeatherInfo from "./WeatherInfo";
 import "./Weather.css";
 
 export default function Weather({ defaultCity }) {
   const [weatherData, setWeatherData] = useState({ loaded: false });
-  const [city, setCity] = useState(defaultCity);
+  const [city, setCity] = useState("");
   const [error, setError] = useState("");
 
   const handleResponse = useCallback((response) => {
@@ -87,13 +88,32 @@ export default function Weather({ defaultCity }) {
         <form onSubmit={handleSubmit} className="search-form">
           <div className="row g-2 justify-content-center">
             <div className="col-12 col-md-9">
-              <input
-                type="search"
-                placeholder="Search for a city..."
-                autoFocus="on"
-                className="form-control search-input "
-                onChange={handleChangeCity}
-              />
+              <div className="search-input-wrapper">
+                <input
+                  type="text"
+                  inputMode="search"
+                  enterKeyHint="search"
+                  placeholder="Search for a city..."
+                  aria-label="Search for a city..."
+                  autoFocus
+                  className="form-control search-input "
+                  value={city}
+                  onChange={handleChangeCity}
+                />
+
+                {city && (
+                  <button
+                    type="button"
+                    className="clear-search"
+                    aria-label="Clear city search"
+                    title="Clear search"
+                    onMouseDown={(event) => event.preventDefault()}
+                    onClick={() => setCity("")}
+                  >
+                    <X size={20} strokeWidth={2} aria-hidden="true" />
+                  </button>
+                )}
+              </div>
             </div>
             <div className="col-12 col-md-3">
               <input
