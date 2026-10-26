@@ -33,7 +33,11 @@ body,
   }
 
   .App footer {
-    margin-top: 30px;
+    max-width: 330px;
+    margin: 30px auto 0;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: rgba(15, 55, 70, 0.28);
     font-size: 13px;
     line-height: 1.6;
   }

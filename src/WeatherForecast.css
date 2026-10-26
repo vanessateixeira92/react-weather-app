@@ -54,8 +54,13 @@
 @media (max-width: 768px) {
   .WeatherForecast {
     overflow-x: auto;
-    overscroll-behavior-inline: contain;
-    scrollbar-width: thin;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .WeatherForecast::-webkit-scrollbar {
+    display: none;
   }
 
   .WeatherForecast .row {

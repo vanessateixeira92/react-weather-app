@@ -34,6 +34,7 @@ export default function WeatherInfo(props) {
                       <FormattedDate
                         date={props.data.date}
                         timezone={props.data.timezone}
+                        live
                       />
                     </li>
                     <li>
@@ -82,7 +83,7 @@ export default function WeatherInfo(props) {
                     <span>Feels like</span>
                   </div>
                   <div className="info-value">
-                    {Math.round(props.data.feels_like)} °C
+                    {Math.round(props.data.feels_like)}°C
                   </div>
                 </div>
               </div>
@@ -98,7 +99,7 @@ export default function WeatherInfo(props) {
                   <div className="info-label">
                     <span>Humidity</span>
                   </div>
-                  <div className="info-value">{props.data.humidity} %</div>
+                  <div className="info-value">{props.data.humidity}%</div>
                 </div>
               </div>
             </div>
